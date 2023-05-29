@@ -6,4 +6,7 @@ export const EXPENSES = [
   new Expense(3, 'Dog food', 80, new Date("2022/12/19")),
   new Expense(4, 'New tv', 50, new Date("2022/11/15")),
   new Expense(5, 'Drinks', 200, new Date("2022/11/03")),
-];
+  new Expense(6, 'Drinks', 200, new Date("2023/05/15")),
+  new Expense(7, 'Drinks', 200, new Date("2023/05/28")),
+  new Expense(8, 'Drinks', 200, new Date("2023/05/25")),
+]

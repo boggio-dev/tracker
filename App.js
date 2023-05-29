@@ -6,6 +6,7 @@ import All from './screens/All';
 import Recent from './screens/Recent';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ManageModal from './screens/ManageModal';
+import ExpensesContextProvider from './store/expenses-context';
 
 const Tab = createBottomTabNavigator();
 
@@ -46,14 +47,20 @@ export default function App() {
   return (
     <>
       <StatusBar style="auto" />
+      
+      <ExpensesContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name='Home' component={BottomTabs} />
 
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name='Home' component={BottomTabs} />
-
-          <Stack.Screen name='ManageModal' component={ ManageModal } options={{presentation: 'modal'}}/>
-        </Stack.Navigator>
-      </NavigationContainer>
+            <Stack.Screen 
+              name='ManageModal' 
+              component={ ManageModal } 
+              options={{presentation: 'modal', headerShown: true}}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ExpensesContextProvider>
     </>
   );
 }

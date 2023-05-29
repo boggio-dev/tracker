@@ -1,8 +1,10 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react'
 import {
   View,
   Text,
   StyleSheet,
+  TouchableNativeFeedback,
 } from 'react-native';
 
 function ExpenseItem(props){
@@ -14,13 +16,22 @@ function ExpenseItem(props){
   } = props;
 
   const formattedDate = date.toLocaleDateString();
+  const navigation = useNavigation();
+
+  const onPress = () => {
+    navigation.navigate('ManageModal', {
+      expenseId: id,
+    })
+  }
   
   return (
-    <View style={styles.container}>
-      <Text>{title}</Text>
-      <Text>{amount}</Text>
-      <Text>{formattedDate}</Text>
-    </View>
+    <TouchableNativeFeedback onPress={onPress}>
+      <View style={styles.container}>
+        <Text>{title}</Text>
+        <Text>{amount}</Text>
+        <Text>{formattedDate}</Text>
+      </View>
+    </TouchableNativeFeedback>
   )
 }
 
